@@ -1,55 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Agrinho - Inovação no Campo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">Agrinho<span>Inova</span></div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">O Projeto</a></li>
-                <li><a href="#solucoes">Soluções</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="inicio" class="hero-section">
-        <div class="hero-content">
-            <h1>Tecnologia a Serviço do <br><span>Campo Sustentável</span></h1>
-            <p>Conectando a inovação digital com as práticas agrícolas do futuro para o projeto Agrinho.</p>
-            <a href="#sobre" class="btn-principal">Saber Mais</a>
-        </div>
-    </section>
-
-    <section id="sobre" class="sobre-section">
-        <h2>Sobre o Nosso Projeto</h2>
-        <p>Esta plataforma foi desenvolvida para conscientizar e apresentar soluções tecnológicas que ajudam o pequeno produtor a economizar água, reduzir desperdícios e proteger o meio ambiente.</p>
+<section id="solucoes" class="calculadora-section">
+        <h2>Simulador de Economia Hídrica</h2>
+        <p>Descubra quantos litros de água você pode economizar por dia mudando para a irrigação inteligente.</p>
         
-        <div class="cards-container">
-            <div class="card">
-                <h3>Sustentabilidade</h3>
-                <p>Práticas que preservam o solo e os recursos hídricos.</p>
-            </div>
-            <div class="card">
-                <h3>Tecnologia</h3>
-                <p>Uso de sensores e dados para melhorar a colheita.</p>
-            </div>
-            <div class="card">
-                <h3>Educação</h3>
-                <p>Levando conhecimento técnico de forma simples ao agricultor.</p>
+        <div class="calculadora-box">
+            <label for="minutos">Minutos de irrigação diária tradicional:</label>
+            <input type="number" id="minutos" placeholder="Ex: 30" min="1">
+            <button onclick="calcularEconomia()">Calcular Economia</button>
+            
+            <div id="resultado" class="resultado-oculto">
+                <p>Com o sistema <strong>AgrinhoInova</strong>, você economizaria aproximadamente:</p>
+                <h3 id="litros-economizados">0 Litros</h3>
+                <span class="dica">Isso equivale a cerca de <span id="baldes">0</span> baldes de água por dia!</span>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Projeto Agrinho - Desenvolvido com foco no Futuro do Agro.</p>
-    </footer>
-
-</body>
-</html>
+    <script>
+        function calcularEconomia() {
+            let minutos = document.getElementById('minutos').value;
+            let resultadoDiv = document.getElementById('resultado');
+            
+            if (minutos > 0) {
+                // Supondo uma economia média de 12 litros por minuto comparado ao método tradicional
+                let litrosEconomizados = minutos * 12;
+                // Um balde médio tem cerca de 10 litros
+                let totalBaldes = Math.round(litrosEconomizados / 10);
+                
+                document.getElementById('litros-economizados').innerText = litrosEconomizados + " Litros por dia";
+                document.getElementById('baldes').innerText = totalBaldes;
+                
+                // Mostra a caixinha de resultado com animação
+                resultadoDiv.style.display = "block";
+            } else {
+                alert("Por favor, insira um número válido de minutos.");
+            }
+        }
+    </script>
