@@ -61,3 +61,46 @@
     <script src="script.js"></script>
 </body>
 </html>
+document.getElementById('soloForm').addEventListener('submit', function(event) {
+    // Impede a página de recarregar ao enviar o formulário
+    event.preventDefault();
+
+    // Pega os valores selecionados pelo usuário
+    const tipoSolo = document.getElementById('tipoSolo').value;
+    const ultimaCultura = document.getElementById('ultimaCultura').value;
+    
+    const resultadoBox = document.getElementById('resultado');
+    const textoResultado = document.getElementById('textoResultado');
+
+    let diagnostico = "";
+
+    // Lógica de recomendação baseada nas combinações
+    if (tipoSolo === "arenoso" && ultimaCultura === "milho") {
+        diagnostico = "Seu solo arenoso perde nutrientes rapidamente e o milho exige muito da terra. **Recomendamos plantar Leguminosas (como Feijão ou Soja)** na próxima safra para fixar nitrogênio no solo naturalmente.";
+    } 
+    else if (tipoSolo === "arenoso" && ultimaCultura === "soja") {
+        diagnostico = "A soja ajudou com o nitrogênio, mas solos arenosos precisam de matéria orgânica. **Recomendamos o plantio de Pastagem (Brachiaria)** ou cobertura vegetal para proteger o solo contra a erosão.";
+    }
+    else if (tipoSolo === "argiloso" && ultimaCultura === "milho") {
+        diagnostico = "Solos argilosos retêm muita água e o milho compacta a terra. **Recomendamos plantar Girassol ou Nabo Forrageiro**, pois suas raízes profundas ajudam a descompactar o solo e melhorar a drenagem.";
+    }
+    else if (tipoSolo === "argiloso" && ultimaCultura === "soja") {
+        diagnostico = "Boa combinação anterior, mas para quebrar ciclos de pragas e doenças no solo argiloso, **o ideal agora é rotacionar com Milho ou Sorgo**.";
+    }
+    else if (tipoSolo === "misto") {
+        diagnostico = "Excelente! Seu solo é equilibrado. Como a última cultura foi " + ultimaCultura + ", você tem alta flexibilidade. **Recomendamos uma rotação com Algodão ou Hortaliças**, mantendo a adubação orgânica em dia para preservar a alta fertilidade.";
+    } 
+    else if (ultimaCultura === "pastagem") {
+        diagnostico = "A área de pastagem acumulou boa matéria orgânica. **Esta é a hora perfeita para entrar com uma cultura de grãos de alta produtividade, como o Milho**, aproveitando os nutrientes reciclados.";
+    }
+    else {
+        diagnostico = "Combinação detectada! Para manter a sustentabilidade, evite repetir a mesma cultura. Prefira alternar entre gramíneas (milho/pastagem) e leguminosas (soja/feijão).";
+    }
+
+    // Altera o texto do HTML e faz a caixinha aparecer
+    textoResultado.innerHTML = diagnostico;
+    resultadoBox.style.display = "block";
+    
+    // Rola a página suavemente até o resultado
+    resultadoBox.scrollIntoView({ behavior: 'smooth' });
+});
