@@ -3,15 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página</title>
-    
+    <title>EcoSolo - Agrinho 2026</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
 
-    <h1>Olá, Mundo!</h1>
-    <p>Se o arquivo CSS estiver na mesma pasta, o estilo será aplicado aqui.</p>
+    <header class="main-header">
+        <div class="logo">🌱 EcoSolo</div>
+        <nav>
+            <p>Categoria: Front-End / Projeto Agrinho</p>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Diagnóstico Inteligente para o Pequeno Produtor</h1>
+            <p>Descubra a melhor rotação de culturas para manter seu solo fértil e sustentável.</p>
+        </section>
+
+        <section class="form-container">
+            <h2>Análise do Seu Solo</h2>
+            <form id="soloForm">
+                <div class="input-group">
+                    <label for="tipoSolo">Tipo de Solo:</label>
+                    <select id="tipoSolo" required>
+                        <option value="">Selecione...</option>
+                        <option value="arenoso">Arenoso (Leve)</option>
+                        <option value="argiloso">Argiloso (Pesado)</option>
+                        <option value="misto">Misto (Ideal)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="ultimaCultura">Última Cultura Plantada:</label>
+                    <select id="ultimaCultura" required>
+                        <option value="">Selecione...</option>
+                        <option value="milho">Milho</option>
+                        <option value="soja">Soja</option>
+                        <option value="pastagem">Pastagem</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-analisar">Gerar Diagnóstico</button>
+            </form>
+        </section>
+
+        <section id="resultado" class="result-box hidden">
+            <h3>📊 Diagnóstico Recomendado</h3>
+            <p id="textoResultado">Selecione as opções acima para ver a análise.</p>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Projeto Desenvolvido para o Concurso Agrinho.</p>
+    </footer>
 
 </body>
 </html>
